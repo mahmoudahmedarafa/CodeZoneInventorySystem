@@ -9,7 +9,7 @@ namespace CodeZoneInventorySystem.ViewModels
         public string Name { get; set; } = null!;
 
         [Required(ErrorMessage = "Please enter item description")]
-        [Display(Name = "Description Name")]
+        [Display(Name = "Item Description")]
         public string? Description { get; set; }
 
         public IFormFile ItemImage { get; set; }

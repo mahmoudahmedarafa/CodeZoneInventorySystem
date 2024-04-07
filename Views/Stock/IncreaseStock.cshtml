@@ -35,19 +35,31 @@
                     </div>
                 </div>
 
+                <br/>
+                <br />
+                <br />
+                <br />
+
                 <div class="col-sm-6">
                     <label asp-for="Quantity" class="form-label">Quantity</label>
                     <input asp-for="Quantity" class="form-control" id="quantity">
                 </div>
-                <div class="col-sm-6">
-                    <span id="currentQuantity"></span>
-                </div>
+                
 
                 <div asp-validation-summary="All" class="text-danger"></div>
             </div>
 
             <a href="javascript:void(0)" class="btn btn-primary" id="btn-increase-stock">Increase Stock</a>
         </form>
+
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <div class="col-sm-6">
+            <span id="currentQuantity"></span>
+        </div>
 
     </div>
 </div>

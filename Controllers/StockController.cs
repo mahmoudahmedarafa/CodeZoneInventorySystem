@@ -50,8 +50,6 @@ namespace CodeZoneInventorySystem.Controllers
 
                         context.SaveChanges();
 
-                        ViewBag.Quantity = storeItem.Quantity;
-
                         model.ResponseCode = 0;
                         model.ResponseMessage = JsonConvert.SerializeObject(storeItem.Quantity);
                     }
@@ -88,7 +86,7 @@ namespace CodeZoneInventorySystem.Controllers
                                                     stItem.ItemId == itemId)
                                              .FirstOrDefault().Quantity;
 
-            return Json(quantity);
+            return Json($"Current stock quantity is {quantity}");
         }
     }
 }
