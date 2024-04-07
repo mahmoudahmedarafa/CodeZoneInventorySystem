@@ -206,3 +206,4 @@ D:\Projects\CodeZoneInventorySystem-master\obj\Debug\net6.0\refint\CodeZoneInven
 D:\Projects\CodeZoneInventorySystem-master\obj\Debug\net6.0\CodeZoneInventorySystem.pdb
 D:\Projects\CodeZoneInventorySystem-master\obj\Debug\net6.0\CodeZoneInventorySystem.genruntimeconfig.cache
 D:\Projects\CodeZoneInventorySystem-master\obj\Debug\net6.0\ref\CodeZoneInventorySystem.dll
+D:\Projects\CodeZoneInventorySystem-master\obj\Debug\net6.0\CodeZoneInventorySystem.sourcelink.json

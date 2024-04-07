@@ -11,9 +11,6 @@ namespace CodeZoneInventorySystem.ViewModels
         [Required(ErrorMessage = "Please enter store address")]
         [Display(Name = "Store Address")]
         public string Address { get; set; } = null!;
-
-        [Required(ErrorMessage = "Please choose store image")]
-        [Display(Name = "Store Image")]
         public IFormFile StoreImage { get; set; }
     }
 }

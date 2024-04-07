@@ -65,6 +65,12 @@ namespace CodeZoneInventorySystem.Controllers
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + model.StoreImage.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+
+
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
                     model.StoreImage.CopyTo(fileStream);
