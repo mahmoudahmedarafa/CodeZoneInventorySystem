@@ -13,8 +13,28 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\images\\bim.jpg",
+      "PackagePath": "staticwebassets\\images\\bim.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\images\\fathalla.jpg",
+      "PackagePath": "staticwebassets\\images\\fathalla.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\images\\samsung.jpg",
+      "PackagePath": "staticwebassets\\images\\samsung.jpg"
+    },
+    {
       "Id": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\images\\sony.jpg",
       "PackagePath": "staticwebassets\\images\\sony.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\images\\tornado.jpg",
+      "PackagePath": "staticwebassets\\images\\tornado.jpg"
+    },
+    {
+      "Id": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\images\\tracker.jpg",
+      "PackagePath": "staticwebassets\\images\\tracker.jpg"
     },
     {
       "Id": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\images\\zahran.jpg",

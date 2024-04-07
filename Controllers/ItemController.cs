@@ -1,6 +1,7 @@
 ﻿using CodeZoneInventorySystem.Models;
 using CodeZoneInventorySystem.Repositories;
 using CodeZoneInventorySystem.Services;
+using CodeZoneInventorySystem.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodeZoneInventorySystem.Controllers
@@ -28,15 +29,54 @@ namespace CodeZoneInventorySystem.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Item model)
+        [ValidateAntiForgeryToken]
+        public IActionResult Add(ItemViewModel model)
         {
             if (ModelState.IsValid)
             {
-                itemRepository.AddItem(model);
-                ViewBag.Message = "Adding new item done.";
+                string uniqueFileName = UploadedFile(model);
+
+                Item store = new Item
+                {
+                    Name = model.Name,
+                    Description = model.Description,
+                    Image = uniqueFileName
+                };
+
+
+                itemRepository.AddItem(store);
+
+                return RedirectToAction(nameof(Index));
             }
 
+
             return View();
+        }
+
+        private string UploadedFile(ItemViewModel model)
+        {
+            string uniqueFileName = null;
+
+            if (model.ItemImage != null)
+            {
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ItemImage.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                if (!Directory.Exists(filePath))
+                {
+                    Directory.CreateDirectory(filePath);
+                }
+
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.ItemImage.CopyTo(fileStream);
+                }
+            }
+
+
+            return uniqueFileName;
         }
 
         [HttpGet]

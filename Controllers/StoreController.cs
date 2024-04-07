@@ -32,7 +32,7 @@ namespace CodeZoneInventorySystem.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Add(StoreViewModel model)
+        public IActionResult Add(StoreViewModel model)
         {
             if (ModelState.IsValid)
             {
