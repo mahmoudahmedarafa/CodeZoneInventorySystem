@@ -46,13 +46,6 @@ namespace CodeZoneInventorySystem.Repositories
 
             if (store != null)
             {
-                foreach(var storeItem in store.StoreItems)
-                {
-                    var item = storeItem.Item;
-
-                    context.Remove(item);
-                }
-
                 context.Remove(store.StoreItems);
 
                 context.Remove(store);

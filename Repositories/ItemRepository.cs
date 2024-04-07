@@ -42,15 +42,12 @@ namespace CodeZoneInventorySystem.Repositories
 
         public void DeleteItem(int itemId)
         {
-            var item = context.Items.Where(item => item.Id == itemId).FirstOrDefault();
+            var item = context.Items.Where(item => item.Id == itemId)
+                                    .FirstOrDefault();
 
-            if (item != null)
-            {
-                context.Remove(item.StoreItems);
-                context.Remove(item);
+            context.Items.Remove(item);
 
-                context.SaveChanges();
-            }
+            context.SaveChanges();
         }
 
         public IEnumerable<Item> GetAllItems()
