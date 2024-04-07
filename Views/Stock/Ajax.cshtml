@@ -1,0 +1,94 @@
+﻿@model StockViewModel
+
+@inject CodeZoneInventorySystem.Services.IStoreRepository storeRepository
+@inject CodeZoneInventorySystem.Services.IITemRepository itemRepository
+
+@{
+    ViewBag.Title = "Increase Stock";
+
+    var allStores = new SelectList(storeRepository.GetAllStores().Select(st => st.Id).ToList());
+    var allItems = new SelectList(itemRepository.GetAllItems().Select(item => item.Id).ToList());
+}
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            //SAVE
+            $("#btn-insert-student").on("click", function () {
+                var formData = new FormData();
+
+                formData.append("selectedStore", $("#selectedStore").val());
+                formData.append("selectedItem", $("#selectedItem").val());
+                formData.append("quantity", $("#quantity").val());
+
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("IncreaseStock", "Stock")',
+                    contentType: false,
+                    processData: false,
+                    cache: false,
+                    data: formData,
+                    success: successCallback,
+                    error: errorCallback
+                });
+            });
+
+            function resetForm() {
+                $("#quantity").val("");
+            }
+            function errorCallback() {
+                bootbox.alert("Something went wrong please contact admin.");
+            }
+            function successCallback(response) {
+                if (response.responseCode == 0) {
+                    resetForm();
+                    bootbox.alert(response.responseMessage, function () {
+
+                        
+                    });
+                }
+                else {
+                    bootbox.alert(response.ResponseMessage);
+                }
+            };
+        });
+    </script>
+}
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <form>
+            <div class="row g-3">
+                <div class="col-sm-6">
+                    <label asp-for="SelectedStore" class="form-label">SelectedStore</label>
+                    <div class="col-sm-10">
+                        <select id="selectedStore" asp-for="SelectedStore" class="custom-select mr-sm-2"
+                                asp-items="allStores">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label asp-for="SelectedItem" class="form-label">SelectedItem</label>
+                    <div class="col-sm-10">
+                        <select id="selectedItem" asp-for="SelectedItem" class="custom-select mr-sm-2"
+                                asp-items="allItems">
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <label asp-for="Quantity" class="form-label">Quantity</label>
+                    <input asp-for="Quantity" class="form-control" id="quantity">
+                </div>
+
+                <div asp-validation-summary="All" class="text-danger"></div>
+            </div>
+
+            <a href="javascript:void(0)" class="btn btn-primary" id="btn-increase-stock">Increase Stock</a>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Store>
+
+
+@{
+    ViewBag.Title = "Stores List";
+}
+
+<a asp-controller="store" asp-action="add"
+   class="btn btn-primary m-1">Add New Store</a>
+<br/>
+<br/>
+
+<div class="card-deck">
+    @foreach (var store in Model)
+    {
+        <img src="~/images/@store.Image"
+             height="40" width="40"
+             asp-append-version="true" />
+
+        <div class="card rounded float-start col-md-4">
+            <div class="card-header">
+                <h3>@store.Name</h3>
+            </div>
+            <img class="card-img-top" src="@store.Image"
+                 asp-append-version="true" />
+            <div class="card-footer text-center">
+                <a asp-controller="store" asp-action="edit" asp-route-id="@store.Id"
+                   class="btn btn-primary m-1">Edit</a>
+                <a asp-controller="store" asp-action="delete" asp-route-id="@store.Id"
+                   class="btn btn-primary m-1">Delete</a>
+            </div>
+        </div>
+    }
+</div>
