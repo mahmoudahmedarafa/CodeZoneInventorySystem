@@ -3,6 +3,7 @@ using CodeZoneInventorySystem.Services;
 using CodeZoneInventorySystem.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace CodeZoneInventorySystem.Controllers
@@ -15,6 +16,7 @@ namespace CodeZoneInventorySystem.Controllers
         {
             this.context = context;
         }
+
 
         [HttpGet]
         public IActionResult IncreaseStock()
@@ -67,6 +69,26 @@ namespace CodeZoneInventorySystem.Controllers
             }
 
             return Json(model);
+        }
+
+        [HttpPost]
+        public JsonResult GetItemDataByStoreId(int storeId)
+        {
+            var data = context.StoreItems.Where(stItem => stItem.StoreId == storeId)
+                                         .Include(stItem => stItem.Item)
+                                         .Select(stItem => stItem.Item)
+                                         .ToList();
+                                         
+            return Json(data);
+        }
+        [HttpPost]
+        public JsonResult GetCurrentQuantity(int storeId, int itemId)
+        {
+            int quantity = context.StoreItems.Where(stItem => stItem.StoreId == storeId &&
+                                                    stItem.ItemId == itemId)
+                                             .FirstOrDefault().Quantity;
+
+            return Json(quantity);
         }
     }
 }
