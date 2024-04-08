@@ -97,31 +97,83 @@ namespace CodeZoneInventorySystem.Controllers
         {
             Item item = itemRepository.GetItem(id);
 
+            ItemEditViewModel itemEditViewModel = new ItemEditViewModel
+            {
+                Id = item.Id,
+                Name = item.Name,
+                Description = item.Description,
+                ExistingPhotoPath = item.Image
+            };
 
-            return View(item);
+
+            return View(itemEditViewModel);
         }
 
         [HttpPost]
-        public IActionResult Edit(Item model)
+        public IActionResult Edit(ItemEditViewModel model)
         {
+            // Check if the provided data is valid, if not rerender the edit view
+            // so the user can correct and resubmit the edit form
             if (ModelState.IsValid)
             {
-
+                // Retrieve the employee being edited from the database
                 Item item = itemRepository.GetItem(model.Id);
-
-
+                // Update the employee object with the data in the model object
                 Item updatedItem = new Item()
                 {
                     Name = model.Name,
-                    Description = model.Description,
+                    Description = model.Description
                 };
 
-                itemRepository.EditItem(item.Id, updatedItem);
+                //Store currentStore = context.Stores.Where(s => s.Id == model.CurrentStoreId)
+                //                                  .FirstOrDefault();
+
+                // If the user wants to change the photo, a new photo will be
+                // uploaded and the Photo property on the model object receives
+                // the uploaded photo. If the Photo property is null, user did
+                // not upload a new photo and keeps his existing photo
+                if (model.ItemImage != null)
+                {
+                    // If a new photo is uploaded, the existing photo must be
+                    // deleted. So check if there is an existing photo and delete
+                    if (model.ExistingPhotoPath != null)
+                    {
+                        string filePath = Path.Combine(hostingEnvironment.WebRootPath,
+                            "images", model.ExistingPhotoPath);
+                        System.IO.File.Delete(filePath);
+                    }
+                    // Save the new photo in wwwroot/images folder and update
+                    // PhotoPath property of the employee object which will be
+                    // eventually saved in the database
+                    item.Image = ProcessUploadedFile(model);
+                }
+
+                // Call update method on the repository service passing it the
+                // employee object to update the data in the database table
+                itemRepository.EditItem(model.Id, updatedItem);
 
                 return RedirectToAction("index");
             }
 
             return View(model);
+        }
+
+        private string ProcessUploadedFile(ItemViewModel model)
+        {
+            string uniqueFileName = null;
+
+            if (model.ItemImage != null)
+            {
+                string uploadsFolder = Path.Combine(hostingEnvironment.WebRootPath, "images");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + model.ItemImage.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    model.ItemImage.CopyTo(fileStream);
+                }
+            }
+
+            return uniqueFileName;
         }
 
         public IActionResult Delete(int itemId)
