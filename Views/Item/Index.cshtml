@@ -10,12 +10,12 @@
 <br />
 <br />
 
-<div class="card-deck">
+<div class="card-deck d-flex flex-wrap">
     @foreach (var item in Model)
     {
         var photoPath = $"~/images/{item.Image}";
 
-        <div class="card col-md-4 row d-flex justify-content-between">
+        <div class="row card col-md-4">
             <div class="card-header">
                 <h3>@item.Name</h3>
             </div>
@@ -36,3 +36,4 @@
         <br/>
     }
 </div>
+
