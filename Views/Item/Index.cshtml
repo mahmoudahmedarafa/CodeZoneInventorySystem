@@ -22,7 +22,11 @@
             <img class="card-img-top" src="@photoPath"
                  asp-append-version="true" />
 
+            <br />
+            <h5>@item.StoreName</h5>
+
             <h5>@item.Description</h5>
+
 
             <div class="card-footer text-center">
                 <a asp-controller="item" asp-action="edit" asp-route-id="@item.Id"

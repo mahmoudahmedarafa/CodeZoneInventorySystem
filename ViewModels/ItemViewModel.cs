@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using CodeZoneInventorySystem.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace CodeZoneInventorySystem.ViewModels
 {
@@ -13,6 +14,10 @@ namespace CodeZoneInventorySystem.ViewModels
         [Display(Name = "Item Description")]
         [MaxLength(500)]
         public string? Description { get; set; }
+
+        [Required(ErrorMessage = "Please choose item current store")]
+        [Display(Name = "Item Store")]
+        public int CurrentStoreId { get; set; }
 
         public IFormFile ItemImage { get; set; }
     }

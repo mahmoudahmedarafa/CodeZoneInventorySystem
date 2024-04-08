@@ -10,11 +10,13 @@ namespace CodeZoneInventorySystem.Controllers
     {
         private readonly IITemRepository itemRepository;
         private readonly IWebHostEnvironment hostingEnvironment;
+        private readonly AppDbContext context;
 
-        public ItemController(IITemRepository itemRepository, IWebHostEnvironment hostingEnvironment) 
+        public ItemController(IITemRepository itemRepository, IWebHostEnvironment hostingEnvironment, AppDbContext context) 
         {
             this.itemRepository = itemRepository;
             this.hostingEnvironment = hostingEnvironment;
+            this.context = context;
         }
 
         public IActionResult Index()
@@ -55,16 +57,34 @@ namespace CodeZoneInventorySystem.Controllers
                     model.ItemImage.CopyTo(new FileStream(filePath, FileMode.Create));
                 }
 
+                Store currentStore = context.Stores.Where(s => s.Id == model.CurrentStoreId)
+                                                        .FirstOrDefault();
+
+
+
                 Item newItem = new Item
                 {
                     Name = model.Name,
                     Description = model.Description,
                     // Store the file name in PhotoPath property of the employee object
                     // which gets saved to the Employees database table
-                    Image = uniqueFileName
+                    Image = uniqueFileName,
+                    StoreName = currentStore.Name
                 };
 
                 itemRepository.AddItem(newItem);
+
+                context.StoreItems.Add(new StoreItem
+                {
+                    StoreId = currentStore.Id,
+                    ItemId = newItem.Id,
+                    Quantity = 1,
+                    DateReceived = DateTime.Now,
+                    Item = newItem,
+                    Store = currentStore
+                });
+
+                context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }

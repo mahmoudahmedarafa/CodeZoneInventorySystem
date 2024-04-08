@@ -31,8 +31,6 @@ namespace CodeZoneInventorySystem.Models
             {
                 entity.ToTable("Item");
 
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.Description)
                     .HasMaxLength(500)
                     .IsUnicode(false);
@@ -44,13 +42,15 @@ namespace CodeZoneInventorySystem.Models
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .IsUnicode(false);
+
+                entity.Property(e => e.StoreName)
+                    .HasMaxLength(50)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Store>(entity =>
             {
                 entity.ToTable("Store");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Address)
                     .HasMaxLength(100)
@@ -82,7 +82,6 @@ namespace CodeZoneInventorySystem.Models
                 entity.HasOne(d => d.Store)
                     .WithMany(p => p.StoreItems)
                     .HasForeignKey(d => d.StoreId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_StoreItem_Store");
             });
 
