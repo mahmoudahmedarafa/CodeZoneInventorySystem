@@ -22,38 +22,40 @@
         </div>
     </div>
 
-    <label asp-for="CurrentStoreId" class="form-label">SelectedStore</label>
-    <div class="col-sm-10">
-        <select id="currentStore" asp-for="CurrentStoreId" class="custom-select mr-sm-2"
-                asp-items="allStores">
-            <option value="" selected disabled>Choose Store</option>
-        </select>
+    <div class="form-group row">
+        <label asp-for="CurrentStoreId" class="form-label">SelectedStore</label>
+        <div class="col-sm-10">
+            <select id="currentStore" asp-for="CurrentStoreId" class="custom-select mr-sm-2"
+                    asp-items="allStores">
+                <option value="" selected disabled>Choose Store</option>
+            </select>
+        </div>
     </div>
 
-    <div class="col-md-6">
-        <div class="form-group">
-            <label asp-for="ItemImage" class="control-label"></label>
-            <div class="custom-file">
-                <input asp-for="ItemImage" class="custom-file-input" id="customFile">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label asp-for="ItemImage" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="ItemImage" class="custom-file-input" id="customFile">
+                </div>
             </div>
         </div>
-    </div>
 
 
-    <div asp-validation-summary="All" class="text-danger"></div>
+        <div asp-validation-summary="All" class="text-danger"></div>
 
-    <br />
-    <br />
+        <br />
+        <br />
 
-    <div class="form-group row">
-        <div class="col-sm-10">
-            <button type="submit" class="btn btn-primary">Create</button>
+        <div class="form-group row">
+            <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary">Create</button>
 
-            <a asp-action="Index" class="btn btn-primary">
-                Back to List
-            </a>
+                <a asp-action="Index" class="btn btn-primary">
+                    Back to List
+                </a>
+            </div>
         </div>
-    </div>
 
 </form>
 

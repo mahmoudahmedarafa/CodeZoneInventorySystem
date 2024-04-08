@@ -42,10 +42,6 @@ namespace CodeZoneInventorySystem.Models
                 entity.Property(e => e.Name)
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.Property(e => e.StoreName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<Store>(entity =>

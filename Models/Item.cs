@@ -14,7 +14,6 @@ namespace CodeZoneInventorySystem.Models
         public string Name { get; set; } = null!;
         public string? Description { get; set; }
         public string? Image { get; set; }
-        public string? StoreName { get; set; }
 
         public virtual ICollection<StoreItem> StoreItems { get; set; }
     }

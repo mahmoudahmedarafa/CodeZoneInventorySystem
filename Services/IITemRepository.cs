@@ -9,5 +9,7 @@ namespace CodeZoneInventorySystem.Services
         public void EditItem(int itemId, Item updatedItem);
         public void DeleteItem(int itemId);
         public IEnumerable<Item> GetAllItems();
+
+        public IEnumerable<string> GetAllStoresOfItem(int itemId);
     }
 }

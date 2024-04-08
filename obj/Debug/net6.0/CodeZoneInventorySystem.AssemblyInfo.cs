@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CodeZoneInventorySystem")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3587982e6673a252c49a5373bf6bfeb3558e3252")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+865525e58010d5e128b6ce862ee0a71f9a6dd338")]
 [assembly: System.Reflection.AssemblyProductAttribute("CodeZoneInventorySystem")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CodeZoneInventorySystem")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

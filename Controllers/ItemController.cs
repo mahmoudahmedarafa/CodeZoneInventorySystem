@@ -58,7 +58,7 @@ namespace CodeZoneInventorySystem.Controllers
                 }
 
                 Store currentStore = context.Stores.Where(s => s.Id == model.CurrentStoreId)
-                                                        .FirstOrDefault();
+                                                   .FirstOrDefault();
 
 
 
@@ -68,8 +68,7 @@ namespace CodeZoneInventorySystem.Controllers
                     Description = model.Description,
                     // Store the file name in PhotoPath property of the employee object
                     // which gets saved to the Employees database table
-                    Image = uniqueFileName,
-                    StoreName = currentStore.Name
+                    Image = uniqueFileName
                 };
 
                 itemRepository.AddItem(newItem);
@@ -105,15 +104,17 @@ namespace CodeZoneInventorySystem.Controllers
         [HttpPost]
         public IActionResult Edit(Item model)
         {
-
             if (ModelState.IsValid)
             {
 
                 Item item = itemRepository.GetItem(model.Id);
-                Item updatedItem = new Item();
 
-                updatedItem.Name = model.Name;
-                updatedItem.Description = model.Description;
+
+                Item updatedItem = new Item()
+                {
+                    Name = model.Name,
+                    Description = model.Description,
+                };
 
                 itemRepository.EditItem(item.Id, updatedItem);
 

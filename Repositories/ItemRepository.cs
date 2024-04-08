@@ -66,5 +66,16 @@ namespace CodeZoneInventorySystem.Repositories
 
             return allItems;
         }
+
+        public IEnumerable<string> GetAllStoresOfItem(int itemId)
+        {
+            var storeNames = context.StoreItems.Where(stItem => stItem.ItemId == itemId)
+                                               .Include(stItem => stItem.Store)
+                                               .Select(store => store.Store)
+                                               .Select(name => name.Name)
+                                               .ToList();
+
+            return storeNames;
+        }
     }
 }

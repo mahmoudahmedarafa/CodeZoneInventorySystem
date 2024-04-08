@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "UO7nYiXgb5xdznOwIVxp9o4SvkH7tiK4Ru7UsG3+JKc=",
+  "Hash": "whoSm4CLGk43Ww0b8DOEs936StGpP1eg07Z/f33yh6w=",
   "Source": "CodeZoneInventorySystem",
   "BasePath": "_content/CodeZoneInventorySystem",
   "Mode": "Default",
@@ -566,6 +566,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\b71b6195-c9e1-4d36-9c40-06070702b43b_fahd.jpg"
+    },
+    {
+      "Identity": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\images\\baf07610-ba89-46b6-aab8-e6a64f917f58_duck.jpg",
+      "SourceId": "CodeZoneInventorySystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\",
+      "BasePath": "_content/CodeZoneInventorySystem",
+      "RelativePath": "images/baf07610-ba89-46b6-aab8-e6a64f917f58_duck.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\baf07610-ba89-46b6-aab8-e6a64f917f58_duck.jpg"
     },
     {
       "Identity": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\images\\bim.jpg",
