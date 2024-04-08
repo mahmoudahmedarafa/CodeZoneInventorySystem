@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vae4zOtuMPLPHsa9WRf4v764BI8QKiW1DSDcacr0TDI=",
+  "Hash": "4AvvQja2UtE9+o1RyY0EPxWj8RwrsCUEbBgaECgokcI=",
   "Source": "CodeZoneInventorySystem",
   "BasePath": "_content/CodeZoneInventorySystem",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\0ebb78e6-db8c-4c2b-8784-d1822daedd34_zahran.jpg"
+    },
+    {
+      "Identity": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\images\\7aa86517-3b08-4e93-83eb-957be07da230_soundcore.jpg",
+      "SourceId": "CodeZoneInventorySystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\",
+      "BasePath": "_content/CodeZoneInventorySystem",
+      "RelativePath": "images/7aa86517-3b08-4e93-83eb-957be07da230_soundcore.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\7aa86517-3b08-4e93-83eb-957be07da230_soundcore.jpg"
     },
     {
       "Identity": "D:\\Projects\\CodeZoneInventorySystem-master\\wwwroot\\images\\bim.jpg",
