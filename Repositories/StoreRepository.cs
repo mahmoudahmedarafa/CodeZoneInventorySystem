@@ -46,8 +46,6 @@ namespace CodeZoneInventorySystem.Repositories
 
             if (store != null)
             {
-                context.Remove(store.StoreItems);
-
                 context.Remove(store);
 
                 context.SaveChanges();
